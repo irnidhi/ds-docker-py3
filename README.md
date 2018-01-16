@@ -1,4 +1,4 @@
-## Minimal Docker container for Data Science Development. Runs Python 3.
+**Minimal Docker container for Data Science Development. Runs Python 3.**
 
 ---
 
