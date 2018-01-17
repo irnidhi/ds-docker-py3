@@ -22,5 +22,7 @@
 - Run `docker build -t foobar .`
 
 ## Note
-- Upload an `environment.yml` file to create a custom (ex. Python3) conda environment.
+
+- The default environment comes with essentials like `pandas`, `seaborn`, `scikit-learn`, and `flask`
 - The conda environment is activated automatically.
+- Upload an `environment.yml` file to create a custom conda environment.
