@@ -26,3 +26,4 @@
 - The default environment comes with essentials like `pandas`, `seaborn`, `scikit-learn`, and `flask`
 - The conda environment is activated automatically.
 - Upload an `environment.yml` file to create a custom conda environment.
+  - When you do this, the container will be re-built
