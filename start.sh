@@ -1,6 +1,9 @@
 # Activate the Conda environment
 source activate ds-py3
 
+git config --global user.name $GIT_USER_NAME
+git config --global user.email $GIT_USER_MAIL
+
 # Print information
 echo ""
 echo ""
@@ -17,4 +20,11 @@ echo "To start a Jupyter notebook server, run ..."
 echo "-----------------------------------------------------------------"
 echo "jupyter notebook --allow-root --no-browser --ip 0.0.0.0 --port 8080"
 echo ""
+echo "Configure git. Run ..."
+echo "-----------------------------------------------------------------"
+echo "git config --global user.email 'you@example.com'"
+echo "git config --global user.name 'Your Name'"
+
 echo ""
+echo ""
+
