@@ -25,10 +25,9 @@ RUN yum -y install bzip2 \
                    which \
                    zlib-devel \
 	&& yum -y groupinstall "Development Tools" \
-&& yum -y remove git \
-	&& wget https://github.com/git/git/archive/v2.15.1.tar.gz -O git.tar.gz \
-	&& tar -zxf git.tar.gz \
-	&& rm -f git.tar.gz \
+	&& yum -y remove git \
+	&& yum -y install https://centos7.iuscommunity.org/ius-release.rpm \
+	&& yum -y install git2u-core.x86_64 \
 && wget --quiet https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh \
 	&& bash miniconda.sh  -b -p /miniconda \
 	&& conda config --append channels conda-forge \
@@ -40,12 +39,6 @@ RUN yum -y install bzip2 \
 && yum -y autoremove \
   	&& yum clean all \
 	&& rm -rf /var/cache/yum
-
-WORKDIR /root/git-2.15.1
-RUN make configure \
-	&& ./configure --prefix=/usr/local \
-	&& make install \
-	&& rm -rf /git-2.15.1
 
 # === INITIALIZE ===
 
