@@ -1,6 +1,19 @@
 FROM centos:latest
 MAINTAINER Dushyant Khosla <dushyant.khosla@yahoo.com
 
+# === SSH DEPENDENCIES===
+
+RUN yum -y update; yum clean all
+RUN yum -y install openssh-server; yum clean all
+ADD ./entrypoint.sh /entrypoint.sh
+RUN mkdir /var/run/sshd
+
+RUN ssh-keygen -t rsa -f /etc/ssh/ssh_host_rsa_key -N ''
+
+RUN chmod 755 /entrypoint.sh
+
+RUN ./entrypoint.sh
+
 # === COPY FILES ===
 
 COPY environment.yml /root/environment.yml
@@ -42,6 +55,7 @@ RUN yum -y install bzip2 \
 
 # === INITIALIZE ===
 
-WORKDIR /home/
-EXPOSE 8080
-CMD /usr/bin/bash
+WORKDIR /home/user
+EXPOSE 8080 22
+#CMD /usr/bin/bash
+CMD ["/usr/sbin/sshd", "-D"]
